@@ -33,6 +33,7 @@ def UV(Xn, Yn, parameters):
     return u,v
 
 # define initial conditions and parameters
+
 Amin = 0
 Amax = 1    
 A0 = 1
