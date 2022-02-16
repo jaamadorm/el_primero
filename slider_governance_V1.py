@@ -4,13 +4,12 @@ Created on Thu Jul  5 07:56:03 2018
 
 @author: amador
 """
-
+# %%
 
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
 from scipy.integrate import odeint
-
 
 # define function
 def resilience(X, t, parameters):
@@ -18,14 +17,12 @@ def resilience(X, t, parameters):
     A,B,C,D = parameters
     derivatives = [A*x*y-B*x, C*x*y-D*y] 
     return derivatives
-
 def PE(parameters):
     A,B,C,D = parameters
     Geq = D/C
     Beq = B/A
     eq = Geq, Beq
     return eq
-
 def UV(Xn, Yn, parameters):
     A,B,C,D = parameters
     u = A*Xn*Yn-B*Xn
@@ -33,7 +30,6 @@ def UV(Xn, Yn, parameters):
     return u,v
 
 # define initial conditions and parameters
-
 Amin = 0
 Amax = 1    
 A0 = 1
@@ -82,14 +78,12 @@ ax2.set_ylabel("Nature's benefit")
 ax2.set_xlim([0,1])
 ax2.set_ylim([0,1])
 
-
 # generate initial vector field 
 X = np.linspace(0, 1, 30)
 Y = np.linspace(0, 1, 30)
 Xn, Yn = np.meshgrid(X, Y)
 u, v = UV(Xn, Yn, parameters0)
 vector_field = ax2.quiver(X, Y, u, v, color = '#4d4d4d', scale = 4, headwidth=4,  headlength=5, linewidths=5, scale_units='x')
-
 
 # create a space in the figure to place the n sliders
 axcolor = 'lightgoldenrodyellow'
@@ -152,3 +146,4 @@ def reset(event):
     slider_y.reset()
 
 button.on_clicked(reset)
+# %%
